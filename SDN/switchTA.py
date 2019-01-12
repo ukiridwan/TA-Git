@@ -17,7 +17,7 @@
 An OpenFlow 1.0 L2 learning switch implementation.
 """
 
-
+#!/usr/bin/env python
 from ryu.base import app_manager
 from ryu.controller import ofp_event
 from ryu.controller.handler import MAIN_DISPATCHER
@@ -27,9 +27,6 @@ from ryu.lib.mac import haddr_to_bin
 from ryu.lib.packet import packet
 from ryu.lib.packet import ethernet
 from ryu.lib.packet import ether_types
-from preprocessing import prep
-from detectionDT import dct
-from detectionNB import dnb
 import os
 
 
@@ -112,9 +109,5 @@ class SimpleSwitch(app_manager.RyuApp):
             self.logger.info("port modified %s", port_no)
         else:
             self.logger.info("Illeagal port state %s %s", port_no, reason)
-    
-    sleep 30
-    prep()
-    sleep 10
-    dct()
-    dnb()
+
+os.system("gnome-terminal -x ./runmininet.sh &")
